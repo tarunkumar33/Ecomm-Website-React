@@ -1,7 +1,7 @@
 import HeaderCartButton from './HeaderCartButton';
 import classes from './navigation.module.css';
 
-const Navigation = () => {  
+const Navigation = (props) => {  
     return (
       <nav className={classes.nav}>
         <ul>
@@ -14,7 +14,7 @@ const Navigation = () => {
             <li>
               <a href="/">About</a>
             </li>
-            <HeaderCartButton/>
+            <HeaderCartButton onClick={props.onShowCart}/>
         </ul>
       </nav>
     );

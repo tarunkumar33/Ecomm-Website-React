@@ -2,10 +2,10 @@ import { Fragment } from "react";
 import classes from "./header.module.css";
 import Navigation from "./navigation";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <>
-    <Navigation/>
+    <Navigation onShowCart={props.onShowCart}/>
       <header className={classes.header}>Mobiles Store</header>
     </>
   );

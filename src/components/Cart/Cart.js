@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import Modal from '../UI/Modal';
+
 import CartItem from './CartItem';
 import classes from './Cart.module.css';
 import CartContext from '../../store/cart-context';
@@ -16,17 +16,20 @@ const Cart = (props) => {
   };
 
   const cartItemAddHandler = (item) => {
-    cartCtx.addItem({...item, amount: 1});
+    cartCtx.addItem({...item, quantity: 1});
   };
-
+  console.log('cartCtx.items:', cartCtx.items);
   const cartItems = (
+
     <ul className={classes['cart-items']}>
       {cartCtx.items.map((item) => (
+        
         <CartItem
           key={item.id}
-          name={item.name}
-          amount={item.amount}
+          title={item.title}
+          imageUrl={item.imageUrl}
           price={item.price}
+          quantity={item.quantity}
           onRemove={cartItemRemoveHandler.bind(null, item.id)}
           onAdd={cartItemAddHandler.bind(null, item)}
         />
@@ -35,7 +38,7 @@ const Cart = (props) => {
   );
 
   return (
-    <Modal onClose={props.onClose}>
+    <div className={classes.cart}>
       {cartItems}
       <div className={classes.total}>
         <span>Total Amount</span>
@@ -47,7 +50,7 @@ const Cart = (props) => {
         </button>
         {hasItems && <button className={classes.button}>Order</button>}
       </div>
-    </Modal>
+    </div>
   );
 };
 

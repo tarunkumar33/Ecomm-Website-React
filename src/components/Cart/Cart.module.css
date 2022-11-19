@@ -1,3 +1,14 @@
+.cart{
+  margin:0px;
+  position:fixed;
+  top:70px;
+  height: 100vh;
+  right:0;
+  background-color:rgb(255, 255, 255);
+  border:1px solid rgb(177, 103, 103);
+  min-height:50vh;
+  width: 500px;
+}
 .cart-items {
   list-style: none;
   margin: 0;
