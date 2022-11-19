@@ -19,6 +19,7 @@
   font-size: large;
 }
 .nav a:hover,
-.nav a:active {
+.nav a:active,
+.nav a.active {
   color: #f3cafb;
 }

@@ -1,12 +1,12 @@
 import Header from "./components/header";
-import './App.css';
+import "./App.css";
 import Main from "./components/main";
-import { useState } from 'react';
+import { useState } from "react";
 import Cart from "./components/Cart/Cart";
-import CartProvider from './store/CartProvider';
+import CartProvider from "./store/CartProvider";
+import { BrowserRouter,Switch,Route } from "react-router-dom";
 
 function App() {
-
   const [cartIsShown, setCartIsShown] = useState(false);
 
   const showCartHandler = () => {
@@ -17,11 +17,23 @@ function App() {
     setCartIsShown(false);
   };
   return (
-    <CartProvider>
-      {cartIsShown && <Cart onClose={hideCartHandler} />}
-      <Header onShowCart={showCartHandler}/>
-      <Main/>
-    </CartProvider>
+    <BrowserRouter>
+      <CartProvider>
+        {cartIsShown && <Cart onClose={hideCartHandler} />}
+        <Header onShowCart={showCartHandler} />
+        <Switch>
+          <Route path="/Store" exact>
+          <Main />
+          </Route>
+          <Route path="/Home" exact>
+          <div>Upcoming Feature Home</div>
+          </Route>
+          <Route path="/About" exact>
+          <div>Upcoming Feature About</div>
+          </Route>
+        </Switch>
+      </CartProvider>
+    </BrowserRouter>
   );
 }
 
