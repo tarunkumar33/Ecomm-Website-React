@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { NavLink } from 'react-router-dom';
 import CartContext from '../store/cart-context';
 import classes from './ProductItem.module.css';
 import ProductItemForm from './ProductItemForm';
@@ -17,7 +18,9 @@ const ProductItem = (props) => {
   return (
     <li className={classes.product}>
         <h1>{title}</h1>
+        <NavLink to={'/product/'+title.split(' ').join('')}>
         <img src={imageUrl}></img>
+        </NavLink>
         <div className={classes.footer}>
         <div>${price}</div>
         <ProductItemForm id={props.id} onAddToCart={addToCartHandler} />

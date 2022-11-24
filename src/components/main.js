@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import ProductItem from "./ProductItem";
 const productsArr = [
   {
@@ -32,6 +33,7 @@ const productsArr = [
 ];
 const Main = () => {
     const productsList = productsArr.map((product) => (
+
         <div style={{flex:'50%'}}>
             <ProductItem
           key={Math.random()}
@@ -39,7 +41,8 @@ const Main = () => {
           {...product}
         />
         </div>
-        
+
+
       ));
     
       return (
