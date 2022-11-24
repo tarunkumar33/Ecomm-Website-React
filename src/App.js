@@ -5,7 +5,7 @@ import { useState } from "react";
 import Cart from "./components/Cart/Cart";
 import CartProvider from "./store/CartProvider";
 import { BrowserRouter,Switch,Route } from "react-router-dom";
-
+import Contact from "./components/contact";
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
 
@@ -30,6 +30,10 @@ function App() {
           </Route>
           <Route path="/About" exact>
           <div>Upcoming Feature About</div>
+          </Route>
+          <Route path="/Contact" exact>
+          <div>Upcoming Feature Contact</div>
+          <Contact/>
           </Route>
         </Switch>
       </CartProvider>

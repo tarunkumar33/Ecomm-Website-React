@@ -15,6 +15,9 @@ const Navigation = (props) => {
             <li>
               <NavLink activeClassName={classes.active} to="/About">About</NavLink>
             </li>
+            <li>
+              <NavLink activeClassName={classes.active} to="/Contact">Contact</NavLink>
+            </li>
             <HeaderCartButton onClick={props.onShowCart}/>
         </ul>
       </nav>
