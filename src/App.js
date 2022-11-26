@@ -4,7 +4,7 @@ import Main from "./components/main";
 import { useContext, useState } from "react";
 import Cart from "./components/Cart/Cart";
 import CartProvider from "./store/CartProvider";
-import { BrowserRouter,Switch,Route, useParams } from "react-router-dom";
+import { BrowserRouter,Switch,Route, useParams,Redirect } from "react-router-dom";
 import Contact from "./components/contact";
 import AuthForm from "./Auth/AuthForm";
 import AuthContext from "./store/auth-context"
@@ -35,7 +35,8 @@ function App() {
           </Route>
         )}
           <Route path="/Store" exact>
-          <Main />
+          {authCtx.isLoggedIn && <Main />}
+          {!authCtx.isLoggedIn && <Redirect to='/Login' />}
           </Route>
           <Route path="/Home" exact>
           <div>Upcoming Feature Home</div>
