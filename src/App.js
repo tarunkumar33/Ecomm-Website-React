@@ -5,9 +5,12 @@ import { useContext, useState } from "react";
 import Cart from "./components/Cart/Cart";
 import CartProvider from "./store/CartProvider";
 import { BrowserRouter,Switch,Route, useParams,Redirect } from "react-router-dom";
-import Contact from "./components/contact";
 import AuthForm from "./Auth/AuthForm";
 import AuthContext from "./store/auth-context"
+import React,{Suspense} from "react";
+
+const Contact=React.lazy(()=>import('./components/contact'));
+
 function App() {
   const authCtx = useContext(AuthContext);
   const [cartIsShown, setCartIsShown] = useState(false);
@@ -25,6 +28,7 @@ function App() {
 }
   return (
     <BrowserRouter>
+    <Suspense fallback={<div>Loading....</div>}>
       <CartProvider>
         {cartIsShown && <Cart onClose={hideCartHandler} />}
         <Header onShowCart={showCartHandler} />
@@ -52,6 +56,7 @@ function App() {
           </Route>
         </Switch>
       </CartProvider>
+      </Suspense>
     </BrowserRouter>
   );
 }
